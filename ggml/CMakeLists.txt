@@ -344,7 +344,7 @@ set_target_properties(ggml PROPERTIES PUBLIC_HEADER "${GGML_PUBLIC_HEADERS}")
 #if (GGML_METAL)
 #    set_target_properties(ggml PROPERTIES RESOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/ggml-metal.metal")
 #endif()
-install(TARGETS ggml LIBRARY PUBLIC_HEADER)
+install(TARGETS ggml LIBRARY PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/llama)
 install(TARGETS ggml-base LIBRARY)
 
 if (GGML_STANDALONE)

@@ -118,6 +118,17 @@ add_library(${TARGET}
     jinja/caps.h
     )
 
+set(LLAMA_COMMON_PUBLIC_HEADERS
+    "${CMAKE_CURRENT_LIST_DIR}/common.h"
+    "${CMAKE_CURRENT_LIST_DIR}/download.h"
+    "${CMAKE_CURRENT_LIST_DIR}/log.h"
+    "${CMAKE_CURRENT_LIST_DIR}/sampling.h"
+)
+
+set_target_properties(llama-common
+    PROPERTIES
+        PUBLIC_HEADER "${LLAMA_COMMON_PUBLIC_HEADERS}")
+
 set_target_properties(${TARGET} PROPERTIES
     VERSION ${LLAMA_INSTALL_VERSION}
     SOVERSION 0

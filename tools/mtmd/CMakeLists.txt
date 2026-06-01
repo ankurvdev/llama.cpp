@@ -78,7 +78,8 @@ set_target_properties(mtmd
     PROPERTIES
     PRIVATE_HEADER debug/mtmd-debug.h)
 
-install(TARGETS mtmd LIBRARY PUBLIC_HEADER)
+install(TARGETS mtmd LIBRARY 
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/llama)
 
 if (NOT MSVC)
     # for stb_image.h and miniaudio.h
