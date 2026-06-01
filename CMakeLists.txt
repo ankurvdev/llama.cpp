@@ -218,7 +218,7 @@ if (LLAMA_BUILD_COMMON AND LLAMA_BUILD_TOOLS)
     add_subdirectory(tools)
 endif()
 
-if (LLAMA_BUILD_APP)
+if (LLAMA_BUILD_APP AND LLAMA_BUILD_TOOLS AND LLAMA_BUILD_SERVER)
     add_subdirectory(app)
 endif()
 
@@ -241,10 +241,14 @@ set_target_properties(llama
     PROPERTIES
         PUBLIC_HEADER "${LLAMA_PUBLIC_HEADERS}")
 
-install(TARGETS llama LIBRARY PUBLIC_HEADER)
+install(TARGETS llama LIBRARY PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/llama)
 
 if (LLAMA_BUILD_COMMON)
-    install(TARGETS llama-common LIBRARY)
+    install(TARGETS llama-common llama-common-base 
+        LIBRARY 
+        PUBLIC_HEADER 
+            DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/llama
+    )
 endif()
 
 configure_package_config_file(
