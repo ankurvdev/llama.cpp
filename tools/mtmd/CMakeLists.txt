@@ -1,4 +1,5 @@
 # mtmd
+include(GNUInstallDirs)
 
 find_package(Threads REQUIRED)
 
